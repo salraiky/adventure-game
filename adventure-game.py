@@ -9,34 +9,35 @@ def print_dialog(dialog):
 
 
 def play():
-    inventory = random.choice(["assault rifle"])
+    inventory = ["assault rifle"]
+    random_inventory = random.choice(inventory)
     target = random.choice(["Tank", "Jet", "car"])
-    intro(target, inventory)
-    camp(target, inventory)
-    battle(target, inventory)
+    intro(target, inventory, random_inventory)
+    camp(target, inventory, random_inventory)
+    battle(target, inventory, random_inventory)
 
 
-def intro(target, inventory):
+def intro(target, inventory, random_inventory):
     print_dialog("You are on the medal of the battlefield, you can "
                  "see a lot of dead bodys on front of you!!!\n")
     print_dialog("You hear an order to destroy the " + target + ".\n")
     print_dialog("The " + target + " is coming to your location!!!\n")
     print_dialog("You can see a camp in your right.\n")
-    print_dialog("You have " + inventory + " on your inventory\n")
+    print_dialog("You have " + random_inventory + " on your inventory\n")
     while True:
         choice1 = input("Would you like to (1) enter the camp or "
                         "(2) face the " + target + "? \n")
         if choice1 == ("2"):
             print_dialog("You went to face the " + target + "!!!\n")
-            battle(target, inventory)
+            battle(target, inventory, random_inventory)
             break
         if choice1 == ("1"):
             print_dialog("You entered the camp.\n")
-            camp(target, inventory)
+            camp(target, inventory, random_inventory)
             break
 
 
-def camp(target, inventory):
+def camp(target, inventory, random_inventory):
     print_dialog("After you enterd the camp.\n")
     print_dialog("You found a wapens locker.\n")
     print_dialog("You ask your self should I open it?\n")
@@ -45,7 +46,7 @@ def camp(target, inventory):
                         "(2) face the " + target + "? \n")
         if choice2 == ("2"):
             print_dialog("You went to face the " + target)
-            battle(target, inventory)
+            battle(target, inventory, random_inventory)
             break
         if choice2 == "1":
             print_dialog("You opened the Loker\n")
@@ -60,7 +61,7 @@ def camp(target, inventory):
                     print_dialog("You walk back to face the " + target +
                                  "!!!\n")
                     inventory.append("Anti aircraft gun")
-                    battle(target, inventory)
+                    battle(target, inventory, random_inventory)
                     break
                 if choice3 == "2":
                     print_dialog("You picked the anti tank this"
@@ -68,11 +69,11 @@ def camp(target, inventory):
                     print_dialog("You walk back to face the " + target +
                                  "!!!\n")
                     inventory.append("Anti tank gun")
-                    battle(target, inventory)
+                    battle(target, inventory, random_inventory)
                     break
 
 
-def battle(target, inventory):
+def battle(target, inventory, random_inventory):
     print_dialog("The " + target + "in front of you\n")
     print_dialog("Will you face the " + target + "?\n")
 
